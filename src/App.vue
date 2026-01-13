@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import WeatherSummary from './components/WeatherSummary.vue'
+</script>
 
 <template>
   <div class="page">
@@ -11,18 +13,7 @@
                 <div class="city-inner">
                   <input type="text" class="search" />
                 </div>
-                <div class="summary">
-                  <div
-                    style="background-image: url('./img/weather-main/thunderstorm.png')"
-                    class="pic-main"
-                  ></div>
-                  <div class="weather">
-                    <div class="temp">14 °C</div>
-                    <div class="weather-desc text-block">Thunderstorm</div>
-                  </div>
-                  <div class="city text-block">Paris, FR</div>
-                  <div class="date text-block">Thu, March 16, 2023</div>
-                </div>
+                <WeatherSummary />
               </div>
             </section>
             <section class="section section-right">
@@ -183,4 +174,86 @@
   </div>
 </template>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+@import './assets/styles/main.sass'
+.page
+  position: relative
+  display: flex
+  justify-content: center
+  align-items: center
+  min-height: 100vh
+  padding: 20px 0
+  background-color: #59585d
+
+.laptop
+  width: 100%
+  padding: 20px
+  background-color: #0e100f
+  border-radius: 25px
+
+.sections
+  display: flex
+  width: 100%
+
+  @media (max-width: 767px)
+    flex-direction: column
+
+.section-left
+  width: 30%
+  padding-right: 10px
+
+  @media (max-width: 767px)
+    width: 100%
+    padding-right: 0
+
+.section-right
+  width: 70%
+  padding-left: 10px
+
+  @media (max-width: 767px)
+    width: 100%
+    margin-top: 16px
+    padding-left: 0
+
+.city-inner
+  position: relative
+  display: inline-block
+  width: 100%
+
+  &::after
+    content: ''
+    position: absolute
+    top: 0
+    right: 10px
+    width: 25px
+    height: 25px
+    background: url('./assets/img/search.svg') no-repeat 50% 50%
+    background-size: contain
+    transform: translateY(50%)
+    cursor: pointer
+
+.info
+  height: 100%
+  padding: 16px
+  background: url('./assets/img/gradient-1.jpg') no-repeat 50% 50%
+  background-size: cover
+  border-radius: 25px
+
+.search
+  width: 100%
+  padding: 16px
+  font-family: 'Inter', Arial, sans-serif
+  color: $white
+  background-color: rgba(0, 0, 0, 0.75)
+  border-radius: 16px
+  border: none
+  outline: none
+  cursor: pointer
+
+.section-bottom
+  width: 50%
+  margin-top: 16px
+
+  @media (max-width: 767px)
+    width: 100%
+</style>
