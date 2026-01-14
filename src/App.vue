@@ -1,6 +1,26 @@
 <script setup lang="ts">
+const API_URL = import.meta.env.VITE_CT_API_URL
+const API_KEY = import.meta.env.VITE_CT_API_KEY
+
+import { ref, onMounted } from 'vue'
+
 import Highlights from './components/Highlights.vue'
 import WeatherSummary from './components/WeatherSummary.vue'
+
+const city = ref('Tokio')
+const weatherInfo = ref(null)
+
+async function fetchWeatherDetails() {
+  try {
+    const response = await fetch(`${API_URL}?q=${city.value}&appid=${API_KEY}`)
+    const data = await response.json()
+    weatherInfo.value = data
+  } catch (error) {
+    console.error('Failed to fetch weather info', error)
+  }
+}
+
+onMounted(fetchWeatherDetails)
 </script>
 
 <template>
@@ -12,7 +32,7 @@ import WeatherSummary from './components/WeatherSummary.vue'
             <section class="section section-left">
               <div class="info">
                 <div class="city-inner">
-                  <input type="text" class="search" />
+                  <input v-model="city" type="text" class="search" />
                 </div>
                 <WeatherSummary />
               </div>
