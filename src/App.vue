@@ -7,7 +7,7 @@ import { ref, onMounted } from 'vue'
 import Highlights from './components/Highlights.vue'
 import WeatherSummary from './components/WeatherSummary.vue'
 
-const city = ref('Tokio')
+const city = ref('Tokyo')
 const weatherInfo = ref(null)
 
 async function fetchWeatherDetails() {
@@ -32,7 +32,12 @@ onMounted(fetchWeatherDetails)
             <section class="section section-left">
               <div class="info">
                 <div class="city-inner">
-                  <input v-model="city" type="text" class="search" />
+                  <input
+                    v-model="city"
+                    type="text"
+                    class="search"
+                    @keyup.enter="fetchWeatherDetails"
+                  />
                 </div>
                 <WeatherSummary />
               </div>
