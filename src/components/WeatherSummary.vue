@@ -1,9 +1,13 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const props = defineProps({
+  weatherInfo: { type: [Object, null], required: true },
+})
+</script>
 
 <template>
-  <div class="summary">
+  <div v-if="weatherInfo?.weather" class="summary">
     <div
-      style="background-image: url('/src/assets/img/weather-main/thunderstorm.png')"
+      :style="`background-image: url('/src/assets/img/weather-main/${weatherInfo?.weather[0].description}.png')`"
       class="pic-main"
     ></div>
     <div class="weather">

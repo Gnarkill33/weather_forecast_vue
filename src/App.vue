@@ -39,7 +39,7 @@ onMounted(fetchWeatherDetails)
                     @keyup.enter="fetchWeatherDetails"
                   />
                 </div>
-                <WeatherSummary />
+                <WeatherSummary :weatherInfo="weatherInfo" />
               </div>
             </section>
             <section class="section section-right">
