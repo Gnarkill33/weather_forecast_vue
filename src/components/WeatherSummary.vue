@@ -1,6 +1,15 @@
 <script setup lang="ts">
+import { capitalizeLetter } from '../utils'
+
 const props = defineProps({
   weatherInfo: { type: [Object, null], required: true },
+})
+
+const currentDate = new Date().toLocaleString('en-EN', {
+  weekday: 'short',
+  month: 'long',
+  day: 'numeric',
+  year: 'numeric',
 })
 </script>
 
@@ -11,11 +20,13 @@ const props = defineProps({
       class="pic-main"
     ></div>
     <div class="weather">
-      <div class="temp">14 °C</div>
-      <div class="weather-desc text-block">Thunderstorm</div>
+      <div class="temp">{{ Math.round(weatherInfo?.main?.temp) }}°C</div>
+      <div class="weather-desc text-block">
+        {{ capitalizeLetter(weatherInfo?.weather[0].description) }}
+      </div>
     </div>
-    <div class="city text-block">Paris, FR</div>
-    <div class="date text-block">Thu, March 16, 2023</div>
+    <div class="city text-block">{{ weatherInfo?.name }}, {{ weatherInfo?.sys?.country }}</div>
+    <div class="date text-block">{{ currentDate }}</div>
   </div>
 </template>
 
