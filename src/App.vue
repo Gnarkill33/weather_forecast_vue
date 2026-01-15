@@ -12,7 +12,7 @@ const weatherInfo = ref(null)
 
 async function fetchWeatherDetails() {
   try {
-    const response = await fetch(`${API_URL}?q=${city.value}&appid=${API_KEY}`)
+    const response = await fetch(`${API_URL}?q=${city.value}&units=metric&appid=${API_KEY}`)
     const data = await response.json()
     weatherInfo.value = data
   } catch (error) {
