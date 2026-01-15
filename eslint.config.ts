@@ -12,6 +12,14 @@ export default defineConfigWithVueTs(
   {
     name: 'app/files-to-lint',
     files: ['**/*.{vue,ts,mts,tsx}'],
+  },
+
+  globalIgnores(['**/dist/**', '**/dist-ssr/**', '**/coverage/**']),
+
+  ...pluginVue.configs['flat/essential'],
+  vueTsConfigs.recommended,
+
+  {
     rules: {
       'vue/multi-word-component-names': [
         'error',
@@ -21,11 +29,6 @@ export default defineConfigWithVueTs(
       ],
     },
   },
-
-  globalIgnores(['**/dist/**', '**/dist-ssr/**', '**/coverage/**']),
-
-  ...pluginVue.configs['flat/essential'],
-  vueTsConfigs.recommended,
 
   skipFormatting,
 )
