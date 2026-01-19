@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { capitalizeLetter } from '../utils'
 
-const props = defineProps({
+defineProps({
   weatherInfo: { type: [Object, null], required: true },
 })
 
