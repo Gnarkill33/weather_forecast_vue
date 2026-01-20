@@ -33,7 +33,7 @@ interface Sys {
   sunset: number
 }
 
-interface Coord {
+export interface Coord {
   lon: number
   lat: number
 }

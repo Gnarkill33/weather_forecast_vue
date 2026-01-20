@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+defineProps({ humidity: Number })
+</script>
 
 <template>
   <section class="section-bottom">
@@ -7,7 +9,7 @@
         <div class="block-bottom-pic pic-humidity"></div>
         <div class="block-bottom-texts">
           <div class="block-bottom-text-block">
-            <div class="block-bottom-text-block-title">Humidity: 60 %</div>
+            <div class="block-bottom-text-block-title">Humidity: {{ humidity }}%</div>
             <div class="block-bottom-text-block-desc">
               Humidity is the concentration of water vapor present in the air. Water vapor, the
               gaseous state of water, is generally invisible to the human eye.

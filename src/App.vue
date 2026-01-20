@@ -50,8 +50,8 @@ onMounted(fetchWeatherDetails)
             </section>
           </div>
           <div class="sections">
-            <CityCoordinates :coordinates="weatherInfo?.coord" />
-            <CityHumidity />
+            <CityCoordinates v-if="weatherInfo?.coord" :coordinates="weatherInfo.coord" />
+            <CityHumidity :humidity="weatherInfo?.main.humidity" />
           </div>
         </div>
       </div>
