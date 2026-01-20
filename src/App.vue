@@ -46,7 +46,7 @@ onMounted(fetchWeatherDetails)
               </div>
             </section>
             <section class="section section-right">
-              <CityHighlights />
+              <CityHighlights :weatherInfo="weatherInfo" />
             </section>
           </div>
           <div class="sections">
