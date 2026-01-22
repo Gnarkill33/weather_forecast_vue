@@ -1,7 +1,19 @@
 <script setup lang="ts">
-import { convertToMmgh } from '@/utils'
-defineProps({
+import { convertToMmgh, getTime } from '@/utils'
+import { computed } from 'vue'
+
+const props = defineProps({
   weatherInfo: { type: [Object, null], required: true },
+})
+
+const timezone = computed(() => props.weatherInfo?.timezone)
+
+const sunriseTime = computed(() => {
+  return getTime(props.weatherInfo?.sys?.sunrise + timezone.value)
+})
+
+const sunsetTime = computed(() => {
+  return getTime(props.weatherInfo?.sys?.sunset + timezone.value)
 })
 </script>
 
@@ -84,12 +96,12 @@ defineProps({
               <div class="state">
                 <div class="state-pic"></div>
                 <div class="state-title">Sunrise</div>
-                <div class="state-time">07:31:42</div>
+                <div class="state-time">{{ sunriseTime }}</div>
               </div>
               <div class="state">
                 <div class="state-pic state-pic--flipped"></div>
                 <div class="state-title">Sunset</div>
-                <div class="state-time">18:34:19</div>
+                <div class="state-time">{{ sunsetTime }}</div>
               </div>
             </div>
           </div>
