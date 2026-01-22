@@ -9,3 +9,7 @@ export const capitalizeLetter = (string: string) => {
 export const convertToMmgh = (hpa: number) => {
   return Math.round(hpa * PRESSURE_UNITS)
 }
+
+export const getTime = (seconds: number) => {
+  return new Date(seconds * 1000).toLocaleTimeString('ru-RU', { timeZone: 'Atlantic/Reykjavik' })
+}
